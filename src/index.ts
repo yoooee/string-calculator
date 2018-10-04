@@ -1,7 +1,6 @@
 export class Test {
   sayHi() {
     console.log('hi!');
-    return true;
   }
 }
 

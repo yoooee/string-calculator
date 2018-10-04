@@ -5,9 +5,11 @@ describe('Test', () => {
 
   beforeEach(() => {
     subject = new Test();
+    spyOn(console, 'log');
   });
 
-  it('says hi and returns true', () => {
-    expect(subject.sayHi()).toEqual(true);
+  it('displays "hi!" in the console', () => {
+    subject.sayHi();
+    expect(console.log).toHaveBeenCalledWith('hi!');
   });
 });
