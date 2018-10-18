@@ -6,15 +6,14 @@ export class StringSplitter {
 
 export class DelimiterManager {
 
-  private _allDelimiters: Array<string>;
-  private _defaultDelimiters: Array<string> = [',', '\n'];
+  private _delimiters: Array<string> = [',', '\n'];
 
-  constructor(userDelimiters: Array<string> = []) {
-    this._allDelimiters = this._defaultDelimiters.concat(userDelimiters);
+  addDelimiter(delimiter) {
+    this._delimiters.push(delimiter);
   }
 
   getDelimiters() {
-    return this._allDelimiters;
+    return this._delimiters;
   }
 }
 
