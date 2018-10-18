@@ -1,4 +1,4 @@
-import { MyTry } from './index';
+import { MyTry, StringSplitter } from './index';
 
 describe('MyTry', () => {
 
@@ -47,4 +47,17 @@ describe('MyTry', () => {
   });
 
 
+});
+
+describe('StringSplitter', () => {
+
+  describe('split()', () => {
+
+    it('should split a string based on the given delimiter ("-")', () => {
+      const stringToSplit = '1-2-3-4-5';
+      const delimiter = '-';
+      const output = StringSplitter.split(stringToSplit, delimiter);
+      expect(output.length).toEqual(5);
+    });
+  });
 });

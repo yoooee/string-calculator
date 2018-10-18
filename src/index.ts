@@ -1,3 +1,9 @@
+export class StringSplitter {
+  static split(stringToSplit, delimiter): Array<string> {
+    return stringToSplit.split(delimiter);
+  }
+}
+
 export class MyTry {
 
   getTotal(stringToParse) {
@@ -12,12 +18,11 @@ export class MyTry {
       let delimiterSplit = [];
 
       tempSplit.forEach(currentString => {
-        let currentSplit = currentString.split(currentDelimiter);
-        delimiterSplit = delimiterSplit.concat(currentSplit);
+        delimiterSplit = delimiterSplit.concat(StringSplitter.split(currentString, currentDelimiter));
+        //delimiterSplit = delimiterSplit.concat(this._getCurrentSplit(currentString, currentDelimiter));
       });
 
       tempSplit = delimiterSplit;
-
     });
 
     return tempSplit.reduce((accumulator, current) => +accumulator + +current);
