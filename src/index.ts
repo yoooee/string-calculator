@@ -14,8 +14,8 @@ export class MyTry {
     // Loop throughd delimiters
     delimiters.forEach(currentDelimiter => {
 
-      const tempSplit = arrayToSplit.reduce((accumulator, currentString) => {
-        return accumulator.concat(currentString.split(currentDelimiter));
+      const tempSplit = arrayToSplit.reduce((currentSplit, currentString) => {
+        return currentSplit.concat(currentString.split(currentDelimiter));
       }, []);
 
       arrayToSplit = tempSplit;
