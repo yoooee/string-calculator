@@ -4,9 +4,8 @@ export class StringSplitter {
   }
 }
 
-export class MyTry {
-
-  getTotal(stringToParse) {
+class StringParser {
+  static parse(stringToParse) {
 
     let delimiters = [',', '\n', ';'];
     let arrayToSplit = [].concat(stringToParse);
@@ -20,6 +19,16 @@ export class MyTry {
 
       arrayToSplit = tempSplit;
     });
+
+    return arrayToSplit;
+  }
+}
+
+export class MyTry {
+
+  getTotal(stringToParse) {
+
+    let arrayToSplit = StringParser.parse(stringToParse);
 
     return arrayToSplit.reduce((accumulator, current) => +accumulator + +current);
   }
