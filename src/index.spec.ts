@@ -3,10 +3,10 @@ import { MyTry, StringSplitter, DelimiterManager } from './index';
 describe('MyTry', () => {
 
   describe('getTotal', () => {
+
     let mytry: MyTry;
 
     beforeEach(() => {
-
       mytry = new MyTry();
     });
 
@@ -91,10 +91,26 @@ describe('StringSplitter', () => {
 });
 
 describe('DelimiterManager', () => {
+
+  let delimiterManager: DelimiterManager;
+  let output;
+
+  beforeEach(() => {
+    delimiterManager = new DelimiterManager();
+  });
+
+  describe('addDelimiter()', () => {
+    it('should add the provided delimiter of %', () => {
+      delimiterManager.addDelimiter('%');
+      output = delimiterManager.getDelimiters();
+      expect(output.length).toEqual(3);
+      expect(output[2]).toContain('%');
+    });
+  });
+
   describe('getDelimiters()', () => {
     it('should return the default delimiters of , and \n', () => {
-      const delimiterManager = new DelimiterManager();
-      const output = delimiterManager.getDelimiters();
+      output = delimiterManager.getDelimiters();
       expect(output.length).toEqual(2);
       expect(output[0]).toContain(',');
       expect(output[1]).toContain('\n');
