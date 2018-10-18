@@ -1,3 +1,8 @@
+export class StringSplitter {
+  static split(stringToSplit, delimiter): Array<string> {
+    return stringToSplit.split(delimiter);
+  }
+}
 
 class StringParser {
   static parse(stringToParse) {
