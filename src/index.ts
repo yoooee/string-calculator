@@ -4,6 +4,14 @@ export class StringSplitter {
   }
 }
 
+export class DelimiterManager {
+  constructor(private _delimiters: string) {}
+
+  getDelimiters() {
+    return this._delimiters;
+  }
+}
+
 class StringParser {
   static parse(stringToParse) {
 
@@ -11,6 +19,7 @@ class StringParser {
     let arrayToSplit = [].concat(stringToParse);
 
     delimiters.forEach(currentDelimiter => {
+      // const tempSplit = splitStringByDelimiter(currentDelimiter);
       const tempSplit = arrayToSplit.reduce((currentSplit, currentString) => {
         return currentSplit.concat(currentString.split(currentDelimiter));
       }, []);
