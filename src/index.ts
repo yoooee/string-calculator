@@ -7,16 +7,18 @@ export class MyTry {
 
     // Loop throughd delimiters
     delimiters.forEach(currentDelimiter => {
-      
+
       // Split each element of the array by the current delimiter
       let delimiterSplit = [];
 
-      for(let j = 0; j < tempSplit.length; j++) {
-        let currentSplit = tempSplit[j].split(currentDelimiter);
+      tempSplit.forEach(currentString => {
+        let currentSplit = currentString.split(currentDelimiter);
         delimiterSplit = delimiterSplit.concat(currentSplit);
-      }
+      });
+
       tempSplit = delimiterSplit;
-    })
+
+    });
 
     return tempSplit.reduce((accumulator, current) => +accumulator + +current);
   }
