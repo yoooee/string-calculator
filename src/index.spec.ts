@@ -1,15 +1,50 @@
-import { Test } from './index';
+import { MyTry } from './index';
 
-describe('Test', () => {
-  let subject;
+describe('MyTry', () => {
 
-  beforeEach(() => {
-    subject = new Test();
-    spyOn(console, 'log');
+  describe('getTotal', () => {
+    let mytry: MyTry;
+
+    beforeEach(() => {
+
+      mytry = new MyTry();
+    });
+
+    it('returns the total of 33 when supplied with a string of "1,23,4,5"', () => {
+      let stringToSplit = '1,23,4,5';
+      let subject = mytry.getTotal(stringToSplit);
+      let expected = 1 + 23 + 4 + 5;
+      expect(subject).toEqual(expected);
+    });
+
+    it('returns the total of 33 when supplied with a string of "1,23\n4,5"', () => {
+      let stringToSplit = '1,23\n4,5';
+      let subject = mytry.getTotal(stringToSplit);
+      let expected = 1 + 23 + 4 + 5;
+      expect(subject).toEqual(expected);
+    });
+
+    it('returns the total of 33 when supplied with a string of "1,23\n4;5"', () => {
+      let stringToSplit = '1,23\n4;5';
+      let subject = mytry.getTotal(stringToSplit);
+      let expected = 1 + 23 + 4 + 5;
+      expect(subject).toEqual(expected);
+    });
+
+    it('returns the total of 33 when supplied with a string of "1;23;4;5"', () => {
+      let stringToSplit = '1;23;4;5';
+      let subject = mytry.getTotal(stringToSplit);
+      let expected = 1 + 23 + 4 + 5;
+      expect(subject).toEqual(expected);
+    });
+
+    it('returns the total of 33 when supplied with a string of "1\n23\n4\n5"', () => {
+      let stringToSplit = '1\n23\n4\n5';
+      let subject = mytry.getTotal(stringToSplit);
+      let expected = 1 + 23 + 4 + 5;
+      expect(subject).toEqual(expected);
+    });
   });
 
-  it('displays "hi!" in the console', () => {
-    subject.sayHi();
-    expect(console.log).toHaveBeenCalledWith('hi!');
-  });
+
 });
