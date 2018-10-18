@@ -5,7 +5,7 @@ export class StringSplitter {
 }
 
 export class DelimiterManager {
-  constructor(private _delimiters: string) {}
+  constructor(private _delimiters: Array<string>) {}
 
   getDelimiters() {
     return this._delimiters;

@@ -93,7 +93,7 @@ describe('StringSplitter', () => {
 describe('DelimiterManager', () => {
   describe('getDelimiters()', () => {
     it('should return the default delimiters of , and \n', () => {
-      const delimiterManager = new DelimiterManager(',\n');
+      const delimiterManager = new DelimiterManager([',','\n']);
       const output = delimiterManager.getDelimiters();
       expect(output.length).toEqual(2);
       expect(output[0]).toContain(',');
