@@ -6,17 +6,17 @@ export class MyTry {
     let tempSplit = [].concat(stringToParse);
 
     // Loop throughd delimiters
-    for(let i = 0; i < delimiters.length; i++) {
-
+    delimiters.forEach(currentDelimiter => {
+      
       // Split each element of the array by the current delimiter
       let delimiterSplit = [];
 
       for(let j = 0; j < tempSplit.length; j++) {
-        let currentSplit = tempSplit[j].split(delimiters[i]);
+        let currentSplit = tempSplit[j].split(currentDelimiter);
         delimiterSplit = delimiterSplit.concat(currentSplit);
       }
       tempSplit = delimiterSplit;
-    }
+    })
 
     return tempSplit.reduce((accumulator, current) => +accumulator + +current);
   }
