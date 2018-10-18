@@ -5,10 +5,16 @@ export class StringSplitter {
 }
 
 export class DelimiterManager {
-  constructor(private _delimiters: Array<string>) {}
+
+  private _allDelimiters: Array<string>;
+  private _defaultDelimiters: Array<string> = [',', '\n'];
+
+  constructor(userDelimiters: Array<string> = []) {
+    this._allDelimiters = this._defaultDelimiters.concat(userDelimiters);
+  }
 
   getDelimiters() {
-    return this._delimiters;
+    return this._allDelimiters;
   }
 }
 
