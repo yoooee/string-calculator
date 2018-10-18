@@ -1,8 +1,3 @@
-export class StringSplitter {
-  static split(stringToSplit, delimiter): Array<string> {
-    return stringToSplit.split(delimiter);
-  }
-}
 
 class StringParser {
   static parse(stringToParse) {
@@ -10,16 +5,12 @@ class StringParser {
     let delimiters = [',', '\n', ';'];
     let arrayToSplit = [].concat(stringToParse);
 
-    // Loop throughd delimiters
     delimiters.forEach(currentDelimiter => {
-
       const tempSplit = arrayToSplit.reduce((currentSplit, currentString) => {
         return currentSplit.concat(currentString.split(currentDelimiter));
       }, []);
-
       arrayToSplit = tempSplit;
     });
-
     return arrayToSplit;
   }
 }
