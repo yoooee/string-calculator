@@ -14,15 +14,11 @@ export class MyTry {
     // Loop throughd delimiters
     delimiters.forEach(currentDelimiter => {
 
-      // Split each element of the array by the current delimiter
-      let delimiterSplit = [];
+      const theSplit = tempSplit.reduce((accumulator, currentString) => {
+        return accumulator.concat(currentString.split(currentDelimiter));
+      }, []);
 
-      tempSplit.forEach(currentString => {
-        delimiterSplit = delimiterSplit.concat(StringSplitter.split(currentString, currentDelimiter));
-        //delimiterSplit = delimiterSplit.concat(this._getCurrentSplit(currentString, currentDelimiter));
-      });
-
-      tempSplit = delimiterSplit;
+      tempSplit = theSplit;
     });
 
     return tempSplit.reduce((accumulator, current) => +accumulator + +current);

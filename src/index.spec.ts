@@ -59,5 +59,33 @@ describe('StringSplitter', () => {
       const output = StringSplitter.split(stringToSplit, delimiter);
       expect(output.length).toEqual(5);
     });
+
+    it('should split a string based on the given delimiter ("3")', () => {
+      const stringToSplit = '1-2-3-4-5';
+      const delimiter = '3';
+      const output = StringSplitter.split(stringToSplit, delimiter);
+      expect(output.length).toEqual(2);
+    });
+
+    it('should split a string based on the given delimiter (" ")', () => {
+      const stringToSplit = '1 234 5';
+      const delimiter = ' ';
+      const output = StringSplitter.split(stringToSplit, delimiter);
+      expect(output.length).toEqual(3);
+    });
+
+    it('should split a string based on the given delimiter ("")', () => {
+      const stringToSplit = '12345';
+      const delimiter = '';
+      const output = StringSplitter.split(stringToSplit, delimiter);
+      expect(output.length).toEqual(5);
+    });
+
+    it('should split a string based on the given delimiter ("%")', () => {
+      const stringToSplit = '12345';
+      const delimiter = '%';
+      const output = StringSplitter.split(stringToSplit, delimiter);
+      expect(output.length).toEqual(1);
+    });
   });
 });
