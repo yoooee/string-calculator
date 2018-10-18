@@ -9,19 +9,19 @@ export class MyTry {
   getTotal(stringToParse) {
 
     let delimiters = [',', '\n', ';'];
-    let tempSplit = [].concat(stringToParse);
+    let arrayToSplit = [].concat(stringToParse);
 
     // Loop throughd delimiters
     delimiters.forEach(currentDelimiter => {
 
-      const theSplit = tempSplit.reduce((accumulator, currentString) => {
+      const tempSplit = arrayToSplit.reduce((accumulator, currentString) => {
         return accumulator.concat(currentString.split(currentDelimiter));
       }, []);
 
-      tempSplit = theSplit;
+      arrayToSplit = tempSplit;
     });
 
-    return tempSplit.reduce((accumulator, current) => +accumulator + +current);
+    return arrayToSplit.reduce((accumulator, current) => +accumulator + +current);
   }
 }
 
