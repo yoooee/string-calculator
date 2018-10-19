@@ -25,16 +25,17 @@ export class DelimiterManager {
 class StringParser {
   static parse(stringToParse) {
 
-    let delimiterManager = new DelimiterManager();
+    const delimiterManager = new DelimiterManager();
     // We need to parse the string for delimiters and then add any we find.
     delimiterManager.addDelimiter(';');
-    let delimiters = delimiterManager.getDelimiters();
+    const delimiters = delimiterManager.getDelimiters();
     let arrayToSplit = [].concat(stringToParse);
 
     delimiters.forEach(currentDelimiter => {
       const arraySplitter: ArraySplitter = new ArraySplitter(arrayToSplit); 
       arrayToSplit = arraySplitter.splitByDelimiter(currentDelimiter);
     });
+
     return arrayToSplit;
   }
 }
@@ -44,7 +45,6 @@ export class MyTry {
   getTotal(stringToParse) {
 
     let arrayToSplit = StringParser.parse(stringToParse);
-
     return arrayToSplit.reduce((accumulator, current) => +accumulator + +current);
   }
 }
