@@ -40,13 +40,10 @@ class StringParser {
   }
 }
 
-export class MyTry {
+export class StringCalculator {
   getTotal(stringToParse) {
 
     let arrayToSplit = StringParser.parse(stringToParse);
     return arrayToSplit.reduce((accumulator, current) => +accumulator + +current);
   }
 }
-
-const mytry = new MyTry();
-console.log(mytry.getTotal('1,2\n7,3\n4\n8,5;6;9,7'));
