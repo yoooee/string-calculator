@@ -20,13 +20,26 @@ export class DelimiterManager {
   getDelimiters() {
     return this._delimiters;
   }
+
+  parseDelimiters(delimitersToParse: string) {
+
+    const customDelimiterFlag: string = '//';
+
+    if (delimitersToParse.indexOf(customDelimiterFlag) >= 0) {
+      //parse 
+      const start = customDelimiterFlag.length;
+      const end = delimitersToParse.indexOf('\n');
+      const customDelimiter = delimitersToParse.slice(start, end);
+      this.addDelimiter(customDelimiter);
+    }
+  }
 }
 
 class StringParser {
   static parse(stringToParse) {
 
     const delimiterManager = new DelimiterManager();
-    // We need to parse the string for delimiters and then add any we find.
+    // delimiterManager.parseDelimiters();
     delimiterManager.addDelimiter(';');
     const delimiters = delimiterManager.getDelimiters();
     let arrayToSplit = [].concat(stringToParse);

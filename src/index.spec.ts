@@ -100,6 +100,15 @@ describe('DelimiterManager', () => {
     delimiterManager = new DelimiterManager();
   });
 
+  describe('parseDelimiters()', () => {
+    it('should parse user specified delimiters from the beginning of a string', () => {
+      let stringToParse = '//;\n1;2';
+      delimiterManager.parseDelimiters(stringToParse);
+      const subject = delimiterManager.getDelimiters();
+      expect(subject.length).toEqual(3);
+    });
+  });
+
   describe('addDelimiter()', () => {
     it('should add the provided delimiter of %', () => {
       delimiterManager.addDelimiter('%');
