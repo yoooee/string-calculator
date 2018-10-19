@@ -22,7 +22,7 @@ export class DelimiterManager {
   }
 }
 
-class ArrayParser {
+class StringParser {
   static parse(stringToParse) {
 
     const delimiterManager = new DelimiterManager();
@@ -43,7 +43,7 @@ class ArrayParser {
 export class MyTry {
   getTotal(stringToParse) {
 
-    let arrayToSplit = ArrayParser.parse(stringToParse);
+    let arrayToSplit = StringParser.parse(stringToParse);
     return arrayToSplit.reduce((accumulator, current) => +accumulator + +current);
   }
 }
