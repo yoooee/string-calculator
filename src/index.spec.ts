@@ -1,4 +1,4 @@
-import { MyTry, StringSplitter, DelimiterManager } from './index';
+import { MyTry, ArraySplitter, DelimiterManager } from './index';
 
 describe('MyTry', () => {
 
@@ -49,42 +49,44 @@ describe('MyTry', () => {
 
 });
 
-describe('StringSplitter', () => {
+describe('ArraySplitter', () => {
 
-  describe('split()', () => {
+  describe('splitByDelimiter()', () => {
 
-    it('should split a string based on the given delimiter ("-")', () => {
-      const stringToSplit = '1-2-3-4-5';
+    let arraySplitter: ArraySplitter;
+
+    it('should split an array based on the given delimiter ("-")', () => {
+      const arraySplitter: ArraySplitter = new ArraySplitter(['1-2-3-4-5']);
       const delimiter = '-';
-      const output = StringSplitter.split(stringToSplit, delimiter);
+      const output = arraySplitter.splitByDelimiter(delimiter);
       expect(output.length).toEqual(5);
     });
 
-    it('should split a string based on the given delimiter ("3")', () => {
-      const stringToSplit = '1-2-3-4-5';
+    it('should split an array based on the given delimiter ("3")', () => {
+      const arraySplitter: ArraySplitter = new ArraySplitter(['1-2-3-4-5']);
       const delimiter = '3';
-      const output = StringSplitter.split(stringToSplit, delimiter);
+      const output = arraySplitter.splitByDelimiter(delimiter);
       expect(output.length).toEqual(2);
     });
 
-    it('should split a string based on the given delimiter (" ")', () => {
-      const stringToSplit = '1 234 5';
+    it('should split an array based on the given delimiter (" ")', () => {
+      const arraySplitter: ArraySplitter = new ArraySplitter(['1 234 5']);
       const delimiter = ' ';
-      const output = StringSplitter.split(stringToSplit, delimiter);
+      const output = arraySplitter.splitByDelimiter(delimiter);
       expect(output.length).toEqual(3);
     });
 
-    it('should split a string based on the given delimiter ("")', () => {
-      const stringToSplit = '12345';
+    it('should split an array based on the given delimiter ("")', () => {
+      const arraySplitter: ArraySplitter = new ArraySplitter(['12345']);
       const delimiter = '';
-      const output = StringSplitter.split(stringToSplit, delimiter);
+      const output = arraySplitter.splitByDelimiter(delimiter);
       expect(output.length).toEqual(5);
     });
 
-    it('should split a string based on the given delimiter ("%")', () => {
-      const stringToSplit = '12345';
+    it('should split an array based on the given delimiter ("%")', () => {
+      const arraySplitter: ArraySplitter = new ArraySplitter(['12345']);
       const delimiter = '%';
-      const output = StringSplitter.split(stringToSplit, delimiter);
+      const output = arraySplitter.splitByDelimiter(delimiter);
       expect(output.length).toEqual(1);
     });
   });

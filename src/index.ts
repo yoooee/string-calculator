@@ -1,11 +1,16 @@
-export class StringSplitter {
-  static split(stringToSplit, delimiter): Array<string> {
-    return stringToSplit.split(delimiter);
+export class ArraySplitter {
+  constructor(private _arrayToSplit: Array<string>) {}
+
+  splitByDelimiter(delimiter): Array<string> {
+    const tempSplit = this._arrayToSplit.reduce((currentSplit, currentString) => {
+      return currentSplit.concat(currentString.split(delimiter));
+    }, []);
+
+    return tempSplit;
   }
 }
 
 export class DelimiterManager {
-
   private _delimiters: Array<string> = [',', '\n'];
 
   addDelimiter(delimiter) {
@@ -20,7 +25,10 @@ export class DelimiterManager {
 class StringParser {
   static parse(stringToParse) {
 
-    let delimiters = [',', '\n', ';'];
+    let delimiterManager = new DelimiterManager();
+    // We need to parse the string for delimiters and then add any we find.
+    delimiterManager.addDelimiter(';');
+    let delimiters = delimiterManager.getDelimiters();
     let arrayToSplit = [].concat(stringToParse);
 
     delimiters.forEach(currentDelimiter => {
