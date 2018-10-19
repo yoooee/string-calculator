@@ -32,9 +32,8 @@ class StringParser {
     let arrayToSplit = [].concat(stringToParse);
 
     delimiters.forEach(currentDelimiter => {
-     const arraySplitter: ArraySplitter = new ArraySplitter(arrayToSplit); 
-      const tempSplit = arraySplitter.splitByDelimiter(currentDelimiter);
-      arrayToSplit = tempSplit;
+      const arraySplitter: ArraySplitter = new ArraySplitter(arrayToSplit); 
+      arrayToSplit = arraySplitter.splitByDelimiter(currentDelimiter);
     });
     return arrayToSplit;
   }
