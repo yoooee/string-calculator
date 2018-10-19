@@ -5,7 +5,6 @@ describe('StringCalculator', () => {
   describe('add', () => {
 
     let stringCalculator: StringCalculator;
-
     beforeEach(() => {
       stringCalculator = new StringCalculator();
     });

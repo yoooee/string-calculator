@@ -42,8 +42,7 @@ class StringParser {
 
 export class StringCalculator {
   add(stringToParse) {
-
-    let arrayToSplit = StringParser.parse(stringToParse);
-    return arrayToSplit.reduce((accumulator, current) => +accumulator + +current);
+    let arrayToAdd = StringParser.parse(stringToParse);
+    return arrayToAdd.reduce((total, currentValue) => +total + +currentValue);
   }
 }
