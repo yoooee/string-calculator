@@ -92,7 +92,6 @@ describe('ArraySplitter', () => {
 });
 
 describe('DelimiterManager', () => {
-
   let delimiterManager: DelimiterManager;
   let output;
 
@@ -103,6 +102,13 @@ describe('DelimiterManager', () => {
   describe('parseDelimiters()', () => {
     it('should parse user specified delimiters from the beginning of a string', () => {
       let stringToParse = '//;\n1;2';
+      delimiterManager.parseDelimiters(stringToParse);
+      const subject = delimiterManager.getDelimiters();
+      expect(subject.length).toEqual(3);
+    });
+
+    it('should parse user specified delimiters from the beginning of a string', () => {
+      let stringToParse = '//|\n1|2';
       delimiterManager.parseDelimiters(stringToParse);
       const subject = delimiterManager.getDelimiters();
       expect(subject.length).toEqual(3);

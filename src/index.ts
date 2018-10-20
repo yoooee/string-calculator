@@ -59,7 +59,7 @@ class StringParser {
     let arrayToSplit = [].concat(stringToParse);
 
     delimiters.forEach(currentDelimiter => {
-      const arraySplitter: ArraySplitter = new ArraySplitter(arrayToSplit); 
+      const arraySplitter: ArraySplitter = new ArraySplitter(arrayToSplit);
       arrayToSplit = arraySplitter.splitByDelimiter(currentDelimiter);
     });
 
