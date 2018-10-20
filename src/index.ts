@@ -10,6 +10,28 @@ export class ArraySplitter {
   }
 }
 
+export class DelimiterParser {
+  private _customDelimiterFlag: string = '//';
+  private _customDelimiter: string;
+
+  constructor(private _delimitersToParse: string) {
+
+    if (this._hasCustomDelimiters()) {
+      const start = this._customDelimiterFlag.length;
+      const end = _delimitersToParse.indexOf('\n');
+      this._customDelimiter = _delimitersToParse.slice(start, end);
+    }
+  }
+
+  getDelimiter() {
+    return this._customDelimiter;
+  }
+
+  private _hasCustomDelimiters() {
+    return this._delimitersToParse.indexOf(this._customDelimiterFlag) >= 0;
+  }
+}
+
 export class DelimiterManager {
   private _delimiters: Array<string> = [',', '\n'];
 
@@ -22,16 +44,8 @@ export class DelimiterManager {
   }
 
   parseDelimiters(delimitersToParse: string) {
-
-    const customDelimiterFlag: string = '//';
-
-    if (delimitersToParse.indexOf(customDelimiterFlag) >= 0) {
-      //parse 
-      const start = customDelimiterFlag.length;
-      const end = delimitersToParse.indexOf('\n');
-      const customDelimiter = delimitersToParse.slice(start, end);
-      this.addDelimiter(customDelimiter);
-    }
+    const delimiterParser = new DelimiterParser(delimitersToParse);
+    this._delimiters.push(delimiterParser.getDelimiter());
   }
 }
 
