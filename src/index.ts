@@ -74,6 +74,7 @@ class StringParser {
     if(stringToParse.indexOf('//') === 0) {
       delimitersOnly = stringToParse.slice(0, stringToParse.indexOf('\n')+1);
       stringToParseOnly = stringToParse.slice(stringToParse.indexOf('\n'));
+      console.log('delimiters only = ', delimitersOnly);
       delimiterManager.parseDelimiters(delimitersOnly);
     }
 
