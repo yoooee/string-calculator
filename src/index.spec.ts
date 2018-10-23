@@ -1,5 +1,6 @@
-import { StringCalculator, DelimiterManager } from './index';
+import { StringCalculator,  } from './index';
 import { ArraySplitter } from './array-splitter';
+import { DelimiterManager } from './delimiter-manager';
 
 describe('StringCalculator', () => {
   describe('add', () => {
