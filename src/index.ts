@@ -5,7 +5,6 @@ export class ArraySplitter {
     const tempSplit = this._arrayToSplit.reduce((currentSplit, currentString) => {
       return currentSplit.concat(currentString.split(delimiter));
     }, []);
-
     return tempSplit;
   }
 }
@@ -13,7 +12,7 @@ export class ArraySplitter {
 export class DelimiterParser {
   private _singleDelimiterFlag = new RegExp(/^\/\/.?[\s]/);
   private _multiDelimiterFlag = new RegExp(/^\/\/\[.*?\][\s]/);
-  private _customDelimitersFlag = new RegExp(/^\/\/.?[\s]|^\/\/\[.*?\][\s]/);
+  private _customDelimiterFlag = new RegExp(/^\/\/.?[\s]|^\/\/\[.*?\][\s]/);
   private _customDelimiters: Array<string> = [];
 
   constructor(private _delimitersToParse: string) {
@@ -36,7 +35,7 @@ export class DelimiterParser {
   }
 
   private _hasCustomDelimiters() {
-    return this._customDelimitersFlag.test(this._delimitersToParse);
+    return this._customDelimiterFlag.test(this._delimitersToParse);
   }
 
   private _hasSingleDelimiter() {
@@ -68,11 +67,18 @@ export class DelimiterManager {
 class StringParser {
   static parse(stringToParse) {
 
+    let delimitersOnly;
+    let stringToParseOnly = stringToParse;
     const delimiterManager = new DelimiterManager();
-    delimiterManager.parseDelimiters(stringToParse);
-    //delimiterManager.addDelimiter(';');
+
+    if(stringToParse.indexOf('//') === 0) {
+      delimitersOnly = stringToParse.slice(0, stringToParse.indexOf('\n')+1);
+      stringToParseOnly = stringToParse.slice(stringToParse.indexOf('\n'));
+      delimiterManager.parseDelimiters(delimitersOnly);
+    }
+
     const delimiters = delimiterManager.getDelimiters();
-    let arrayToSplit = [].concat(stringToParse);
+    let arrayToSplit = [].concat(stringToParseOnly);
 
     delimiters.forEach(currentDelimiter => {
       const arraySplitter: ArraySplitter = new ArraySplitter(arrayToSplit);
