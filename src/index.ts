@@ -1,13 +1,4 @@
-export class ArraySplitter {
-  constructor(private _arrayToSplit: Array<string>) {}
-
-  splitByDelimiter(delimiter): Array<string> {
-    const tempSplit = this._arrayToSplit.reduce((currentSplit, currentString) => {
-      return currentSplit.concat(currentString.split(delimiter));
-    }, []);
-    return tempSplit;
-  }
-}
+import { ArraySplitter } from './array-splitter';
 
 export class DelimiterParser {
   private _singleDelimiterFlag = new RegExp(/^\/\/.?[\s]/);
@@ -74,7 +65,6 @@ class StringParser {
     if(stringToParse.indexOf('//') === 0) {
       delimitersOnly = stringToParse.slice(0, stringToParse.indexOf('\n')+1);
       stringToParseOnly = stringToParse.slice(stringToParse.indexOf('\n'));
-      console.log('delimiters only = ', delimitersOnly);
       delimiterManager.parseDelimiters(delimitersOnly);
     }
 
