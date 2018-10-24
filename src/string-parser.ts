@@ -2,15 +2,18 @@ import { ArraySplitter } from './array-splitter';
 import { DelimiterManager } from './delimiter-manager';
 
 export class StringParser {
-  static parse(stringToParse) {
 
+  constructor(private _stringToParse: string) { }
+
+  public parse() {
     let delimitersOnly;
-    let stringToParseOnly = stringToParse;
+    let stringToParseOnly = this._stringToParse;
     const delimiterManager = new DelimiterManager();
 
-    if(stringToParse.indexOf('//') === 0) {
-      delimitersOnly = stringToParse.slice(0, stringToParse.indexOf('\n')+1);
-      stringToParseOnly = stringToParse.slice(stringToParse.indexOf('\n'));
+    // Has custom delimiters?
+    if(this._hasCustomDelimiters()) {
+      delimitersOnly = this._stringToParse.slice(0, this._stringToParse.indexOf('\n')+1);
+      stringToParseOnly = this._stringToParse.slice(this._stringToParse.indexOf('\n'));
       delimiterManager.parseDelimiters(delimitersOnly);
     }
 
@@ -23,5 +26,10 @@ export class StringParser {
     });
 
     return arrayToSplit;
+  }
+
+  private _hasCustomDelimiters() {
+    const customDelimiterFlag = new RegExp(/^\/\/.?[\s]|^\/\/\[.*?\][\s]/);
+    return customDelimiterFlag.test(this._stringToParse);
   }
 }

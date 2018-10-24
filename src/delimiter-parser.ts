@@ -2,7 +2,6 @@
 export class DelimiterParser {
   private _singleDelimiterFlag = new RegExp(/^\/\/.?[\s]/);
   private _multiDelimiterFlag = new RegExp(/^\/\/\[.*?\][\s]/);
-  private _customDelimiterFlag = new RegExp(/^\/\/.?[\s]|^\/\/\[.*?\][\s]/);
   private _customDelimiters: Array<string> = [];
 
   constructor(private _delimitersToParse: string) {
@@ -24,9 +23,6 @@ export class DelimiterParser {
     return this._customDelimiters;
   }
 
-  private _hasCustomDelimiters() {
-    return this._customDelimiterFlag.test(this._delimitersToParse);
-  }
 
   private _hasSingleDelimiter() {
     return this._singleDelimiterFlag.test(this._delimitersToParse);
