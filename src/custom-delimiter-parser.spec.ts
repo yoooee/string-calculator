@@ -11,14 +11,6 @@ fdescribe('CustomDelimiterParser', () => {
       expect(subject).toEqual(expected);
     });
 
-    //it('should not return an array of delimiters when not properly formatted', () => {
-      //const delimitersToParse = '//;*';
-      //let delimiterParser = new DelimiterParser(delimitersToParse);
-      //let subject = delimiterParser.getDelimiters();
-      //let expected = undefined;
-      //expect(subject.length).toEqual(0);
-      //expect(subject).toEqual(expected);
-    //});
     it('should return multiple arrays', () => {
       const delimitersToParse = '//[*][#]';
       let customDelimiterParser = new CustomDelimiterParser(delimitersToParse);
