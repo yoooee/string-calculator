@@ -1,6 +1,6 @@
 import { StringParser } from './string-parser';
 
-fdescribe('StringParser', () => {
+describe('StringParser', () => {
   describe('parse', () => {
     it('should take a string and split it based on custom delimiters', () => {
       let stringToParse = '1,2,3,4';

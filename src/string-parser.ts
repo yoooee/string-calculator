@@ -1,4 +1,5 @@
 import { ArraySplitter } from './array-splitter';
+import { StringSplitter } from './string-splitter';
 import { DelimiterManager } from './delimiter-manager';
 
 export class StringParser {
@@ -7,13 +8,14 @@ export class StringParser {
 
   public parse() {
     let delimitersOnly;
+    const splitValue = '\n';
     let stringToParseOnly = this._stringToParse;
     const delimiterManager = new DelimiterManager();
 
-    // Has custom delimiters?
     if(this._hasCustomDelimiters()) {
-      delimitersOnly = this._stringToParse.slice(0, this._stringToParse.indexOf('\n')+1);
-      stringToParseOnly = this._stringToParse.slice(this._stringToParse.indexOf('\n'));
+      const splitString = StringSplitter.split(this._stringToParse, splitValue);
+      delimitersOnly = splitString[0];
+      stringToParseOnly = splitString[1];
       delimiterManager.parseDelimiters(delimitersOnly);
     }
 
