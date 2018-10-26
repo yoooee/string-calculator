@@ -1,6 +1,6 @@
 import { CustomDelimiterParser } from './custom-delimiter-parser';
 
-fdescribe('CustomDelimiterParser', () => {
+describe('CustomDelimiterParser', () => {
   describe('getDelimiters', () => {
     it('should return an array of delimiters', () => {
       const delimitersToParse = '//;';
@@ -15,7 +15,7 @@ fdescribe('CustomDelimiterParser', () => {
       const delimitersToParse = '//[*][#]';
       let customDelimiterParser = new CustomDelimiterParser(delimitersToParse);
       let subject = customDelimiterParser.getDelimiters();
-      let expected = ['*', "#"];
+      let expected = ['*', '#'];
       expect(subject.length).toEqual(2);
       expect(subject).toEqual(expected);
     });

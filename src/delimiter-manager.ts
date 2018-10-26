@@ -1,4 +1,4 @@
-import { DelimiterParser } from './delimiter-parser';
+import { CustomDelimiterParser } from './custom-delimiter-parser';
 
 export class DelimiterManager {
   private _delimiters: Array<string> = [',', '\n'];
@@ -12,7 +12,7 @@ export class DelimiterManager {
   }
 
   parseDelimiters(delimitersToParse: string) {
-    const delimiterParser = new DelimiterParser(delimitersToParse);
-    this._delimiters = (this._delimiters.concat(delimiterParser.getDelimiters()));
+    const customDelimiterParser = new CustomDelimiterParser(delimitersToParse);
+    this._delimiters = (this._delimiters.concat(customDelimiterParser.getDelimiters()));
   }
 }

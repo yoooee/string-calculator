@@ -4,13 +4,15 @@ export class CustomDelimiterParser {
 
   constructor(private _customDelimitersToParse: string) {
     this._customDelimitersToParse = _customDelimitersToParse.substr(2, _customDelimitersToParse.length);
-    this._customDelimiters = [].concat(this._customDelimitersToParse);
 
     if (this._hasMultiDelimiters()) {
       let cleanDelimiters = this._customDelimitersToParse.slice(this._customDelimitersToParse.indexOf('[')+1, this._customDelimitersToParse.lastIndexOf(']'));
       let arrayOfCleanDelimiters = cleanDelimiters.split('][');
 
       this._customDelimiters = arrayOfCleanDelimiters;
+    } else {
+      let cleanDelimiters = this._customDelimitersToParse.charAt(0);
+      this._customDelimiters = [].concat(cleanDelimiters);
     }
   }
 
