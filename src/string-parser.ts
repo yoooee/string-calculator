@@ -1,5 +1,4 @@
 import { ArraySplitter } from './array-splitter';
-import { StringSplitter } from './string-splitter';
 import { DelimiterManager } from './delimiter-manager';
 
 export class StringParser {
