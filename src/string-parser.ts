@@ -8,15 +8,12 @@ export class StringParser {
   constructor(private _stringToParse: string) { }
 
   public parse() {
-    let delimitersOnly;
     let stringToParseOnly = this._stringToParse;
     const delimiterManager = new DelimiterManager();
 
     if(this._hasCustomDelimiters()) {
-      const splitString = [];
-      delimitersOnly = this._getStringDelimiters();
       stringToParseOnly = this._getStringValues();
-      delimiterManager.parseDelimiters(delimitersOnly);
+      delimiterManager.parseDelimiters(this._getStringDelimiters());
     }
 
     const delimiters = delimiterManager.getDelimiters();
@@ -44,7 +41,11 @@ export class StringParser {
   }
 
   private _getStringValues() {
-    let stuff = this._stringToParse.slice(this._stringToParse.indexOf(this._splitValue), this._stringToParse.length);
-    return stuff.slice(1, stuff.length);
+    let stringValues = this._stringToParse.slice(this._stringToParse.indexOf(this._splitValue), this._stringToParse.length);
+    return this._removeNewLineFromStart(stringValues); 
+  }
+
+  private _removeNewLineFromStart(stringToAlter) {
+    return stringToAlter.slice(1, stringToAlter.length);
   }
 }
