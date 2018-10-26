@@ -41,7 +41,7 @@ export class StringParser {
 
   private _getStringValues() {
     let stringValues = this._stringToParse.slice(this._stringToParse.indexOf(this._splitValue), this._stringToParse.length);
-    return this._removeNewLineFromStart(stringValues); 
+    return this._removeNewLineFromStart(stringValues);
   }
 
   private _removeNewLineFromStart(stringToAlter) {

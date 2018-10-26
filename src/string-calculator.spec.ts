@@ -59,10 +59,17 @@ describe('StringCalculator', () => {
       expect(subject).toEqual(expected);
     });
 
-    it('should do things', () => {
+    it('should allow for many custom delimiters', () => {
       let stringToSplit = '//[a][b][c][d]\n1a2b3c4d5';
       let subject = StringCalculator.add(stringToSplit);
       let expected = 1 + 2 + 3 + 4 + 5;
+      expect(subject).toEqual(expected);
+    });
+
+    it('should ignore numbers larger than 1000', () => {
+      let stringToSplit = '1,1001,1000,2,5000,2';
+      let subject = StringCalculator.add(stringToSplit);
+      let expected = 1 + 1000 + 2 + 2;
       expect(subject).toEqual(expected);
     });
   });

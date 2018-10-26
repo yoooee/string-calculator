@@ -8,6 +8,11 @@ export class StringCalculator {
   }
 
   static sumAllValues(arrayToSum) {
-    return arrayToSum.reduce((total, currentValue) => +total + +currentValue);
+    return arrayToSum.reduce((total, currentValue) => {
+      if (+currentValue > 1000)
+        currentValue = 0;
+
+      return +total + +currentValue;
+    });
   }
 }
