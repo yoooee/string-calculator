@@ -14,13 +14,8 @@ export class StringParser {
 
     if(this._hasCustomDelimiters()) {
       const splitString = [];
-      // Get Delimiters
-      splitString.push(this._stringToParse.slice(0, this._stringToParse.indexOf(this._splitValue)));
-      splitString.push(this._stringToParse.slice(this._stringToParse.indexOf(this._splitValue), this._stringToParse.length));
-      delimitersOnly = this._getDelimiters();
-      stringToParseOnly = splitString[1].slice(1, splitString[1].length);
-      console.log('delimters only ', delimitersOnly); // = //;
-      console.log('stringto parse only', stringToParseOnly); // = 1;2;3;4;5
+      delimitersOnly = this._getStringDelimiters();
+      stringToParseOnly = this._getStringValues();
       delimiterManager.parseDelimiters(delimitersOnly);
     }
 
@@ -44,7 +39,12 @@ export class StringParser {
     const baseDelimiterFlag = new RegExp(/,|\\n/g);
   }
 
-  private _getDelimiters() {
+  private _getStringDelimiters() {
     return this._stringToParse.slice(0, this._stringToParse.indexOf(this._splitValue));
+  }
+
+  private _getStringValues() {
+    let stuff = this._stringToParse.slice(this._stringToParse.indexOf(this._splitValue), this._stringToParse.length);
+    return stuff.slice(1, stuff.length);
   }
 }
