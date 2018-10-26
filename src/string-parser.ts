@@ -13,7 +13,6 @@ export class StringParser {
     const delimiterManager = new DelimiterManager();
 
     if(this._hasCustomDelimiters()) {
-      //const splitString = StringSplitter.split(this._stringToParse, splitValue);
       const splitString = [];
       splitString.push(this._stringToParse.slice(0, this._stringToParse.indexOf(splitValue)));
       splitString.push(this._stringToParse.slice(this._stringToParse.indexOf(splitValue), this._stringToParse.length));

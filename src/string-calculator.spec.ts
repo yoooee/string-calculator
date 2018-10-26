@@ -38,7 +38,7 @@ describe('StringCalculator', () => {
       expect(subject).toEqual(expected);
     });
 
-    it('returns the total of 33 when supplied with a string of "1***23***4***5"', () => {
+    it('returns the total of 33 when supplied with a string of "//[***]\n1***23***4***5"', () => {
       let stringToSplit = '//[***]\n1***23***4***5';
       let subject = StringCalculator.add(stringToSplit);
       let expected = 1 + 23 + 4 + 5;

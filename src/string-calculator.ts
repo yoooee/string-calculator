@@ -2,10 +2,9 @@ import { StringParser } from './string-parser';
 
 export class StringCalculator {
   static add(stringToParse) {
-    let stringParser = new StringParser(stringToParse);
-    let arrayToSum = stringParser.parse();
+    const stringParser = new StringParser(stringToParse);
 
-    return StringCalculator.sumAllValues(arrayToSum);
+    return StringCalculator.sumAllValues(stringParser.parse());
   }
 
   static sumAllValues(arrayToSum) {

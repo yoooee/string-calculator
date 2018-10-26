@@ -3,6 +3,7 @@ export class ArraySplitter {
 
   splitByDelimiter(delimiter): Array<string> {
     const tempSplit = this._arrayToSplit.reduce((currentSplit, currentString) => {
+
       return currentSplit.concat(currentString.split(delimiter));
     }, []);
     return tempSplit;
