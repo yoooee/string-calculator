@@ -5,7 +5,7 @@ export class CustomDelimiterParser {
   constructor(private _customDelimitersToParse: string) {
     this._customDelimitersToParse = _customDelimitersToParse.substr(2, _customDelimitersToParse.length);
 
-    if (this._hasMultiDelimiters()) {
+    if (this._hasMultipleDelimiters()) {
       let cleanDelimiters = this._customDelimitersToParse.slice(this._customDelimitersToParse.indexOf('[')+1, this._customDelimitersToParse.lastIndexOf(']'));
       let arrayOfCleanDelimiters = cleanDelimiters.split('][');
 
@@ -20,7 +20,7 @@ export class CustomDelimiterParser {
     return this._customDelimiters;
   }
 
-  private _hasMultiDelimiters() {
+  private _hasMultipleDelimiters() {
     return this._multiDelimiterFlag.test(this._customDelimitersToParse);
   }
 }
