@@ -2,11 +2,10 @@ import { StringParser } from './string-parser';
 
 export class StringCalculator {
 
-  constructor() {}
+  constructor(private _stringParser = new StringParser()) {}
 
   add(stringToParse) {
-    const stringParser = new StringParser(stringToParse);
-    return this._sumAllValues(stringParser.parse());
+    return this._sumAllValues(this._stringParser.parse(stringToParse));
   }
 
   private _sumAllValues(arrayToSum) {

@@ -2,11 +2,11 @@ import { ArraySplitter } from './array-splitter';
 import { DelimiterManager } from './delimiter-manager';
 
 export class StringParser {
+  private _stringToParse: string;
   private _splitValue: string = '\n';
 
-  constructor(private _stringToParse: string) { }
-
-  public parse() {
+  public parse(stringToParse: string) {
+    this._stringToParse = stringToParse;
     let stringToParseOnly = this._stringToParse;
     const delimiterManager = new DelimiterManager();
 
