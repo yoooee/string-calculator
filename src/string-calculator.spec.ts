@@ -72,6 +72,22 @@ describe('StringCalculator', () => {
       let expected = 1 + 1000 + 2 + 2;
       expect(subject).toEqual(expected);
     });
+
+    it('should throw a new error when negative numbers are in the string', () => {
+      let stringToSplit = '-1,2,3,4,5';
+
+      expect(() => {
+        StringCalculator.add(stringToSplit)
+      }).toThrow(new Error('negatives not allowed -1'));
+    });
+
+    it('should throw a new error when negative numbers are in the string', () => {
+      let stringToSplit = '-1,-2,-3,4,5';
+
+      expect(() => {
+        StringCalculator.add(stringToSplit)
+      }).toThrow(new Error('negatives not allowed -1,-2,-3'));
+    });
   });
 });
 
