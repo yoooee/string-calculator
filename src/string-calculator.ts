@@ -1,13 +1,16 @@
 import { StringParser } from './string-parser';
 
 export class StringCalculator {
-  static add(stringToParse) {
+
+  constructor() {}
+
+  add(stringToParse) {
     const stringParser = new StringParser(stringToParse);
-    return StringCalculator.sumAllValues(stringParser.parse());
+    return this._sumAllValues(stringParser.parse());
   }
 
-  static sumAllValues(arrayToSum) {
-    StringCalculator.checkForNegativeValues(arrayToSum);
+  private _sumAllValues(arrayToSum) {
+    this._checkForNegativeValues(arrayToSum);
 
     return arrayToSum.reduce((total, currentValue) => {
       if (currentValue > 1000)
@@ -16,7 +19,7 @@ export class StringCalculator {
     }, 0);
   }
 
-  static checkForNegativeValues(arrayToCheck) {
+  private _checkForNegativeValues(arrayToCheck) {
     const negativeValues = arrayToCheck.filter(currentValue => currentValue < 0);
 
     if (negativeValues.length > 0) {
