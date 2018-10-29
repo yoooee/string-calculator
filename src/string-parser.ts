@@ -5,22 +5,22 @@ export class StringParser {
   private _stringToParse: string;
   private _splitValue: string = '\n';
 
+  constructor(private _delimiterManager = new DelimiterManager(), private _arraySplitter = ArraySplitter) {}
+
   public parse(stringToParse: string) {
     this._stringToParse = stringToParse;
     let stringToParseOnly = this._stringToParse;
-    const delimiterManager = new DelimiterManager();
 
     if(this._hasCustomDelimiters()) {
       stringToParseOnly = this._getStringValues();
-      delimiterManager.parseDelimiters(this._getStringDelimiters());
+      this._delimiterManager.parseDelimiters(this._getStringDelimiters());
     }
 
-    const delimiters = delimiterManager.getDelimiters();
+    const delimiters = this._delimiterManager.getDelimiters();
     let arrayToSplit = [].concat(stringToParseOnly);
 
     delimiters.forEach(currentDelimiter => {
-      const arraySplitter: ArraySplitter = new ArraySplitter(arrayToSplit);
-      arrayToSplit = arraySplitter.splitByDelimiter(currentDelimiter);
+      arrayToSplit = this._arraySplitter.splitByDelimiter(arrayToSplit, currentDelimiter);
     });
 
     return arrayToSplit;

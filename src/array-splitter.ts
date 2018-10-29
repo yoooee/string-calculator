@@ -1,8 +1,7 @@
 export class ArraySplitter {
-  constructor(private _arrayToSplit: Array<string>) {}
 
-  splitByDelimiter(delimiter): Array<string> {
-    const tempSplit = this._arrayToSplit.reduce((currentSplit, currentString) => {
+  static splitByDelimiter(arrayToSplit, delimiter): Array<string> {
+    const tempSplit = arrayToSplit.reduce((currentSplit, currentString) => {
 
       return currentSplit.concat(currentString.split(delimiter));
     }, []);

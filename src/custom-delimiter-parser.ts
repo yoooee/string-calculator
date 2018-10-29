@@ -10,7 +10,6 @@ export class CustomDelimiterParser {
 
     if (this._hasMultipleDelimiters()) {
       cleanDelimiters = this._removeSuroundingBrackets();
-      //this._customDelimiters = cleanDelimiters.split(this._multiDelimiterFlagRight + this._multiDelimiterFlagLeft);
       this._customDelimiters = this._parse(cleanDelimiters);
     } else {
       cleanDelimiters = this._removeValues();
