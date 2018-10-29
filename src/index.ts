@@ -1,6 +1,7 @@
 import { StringCalculator } from './string-calculator';
 
-let stringCalc = new StringCalculator();
+const stringCalc = new StringCalculator();
+
 stringCalc.add('1,2,3,4,5');
 stringCalc.add('1,2,3,4,5');
 stringCalc.add('1\n2\n3\n4\n5');

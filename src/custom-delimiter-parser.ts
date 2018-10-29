@@ -1,5 +1,7 @@
 export class CustomDelimiterParser {
   private _multiDelimiterFlag = new RegExp(/^(\[.*?\])+/);
+  private _multiDelimiterFlagLeft = '[';
+  private _multiDelimiterFlagRight = ']';
   private _customDelimiters: Array<string>;
 
   constructor(private _customDelimitersToParse: string) {
@@ -8,8 +10,8 @@ export class CustomDelimiterParser {
 
     if (this._hasMultipleDelimiters()) {
       cleanDelimiters = this._removeSuroundingBrackets();
-      const arrayOfCleanDelimiters = cleanDelimiters.split('][');
-      this._customDelimiters = arrayOfCleanDelimiters;
+      //this._customDelimiters = cleanDelimiters.split(this._multiDelimiterFlagRight + this._multiDelimiterFlagLeft);
+      this._customDelimiters = this._parse(cleanDelimiters);
     } else {
       cleanDelimiters = this._removeValues();
       this._customDelimiters = [].concat(cleanDelimiters);
@@ -20,12 +22,19 @@ export class CustomDelimiterParser {
     return this._customDelimiters;
   }
 
+  private _parse(delimitersToParse) {
+    return delimitersToParse.split(this._multiDelimiterFlagRight + this._multiDelimiterFlagLeft);
+  }
+
   private _hasMultipleDelimiters() {
     return this._multiDelimiterFlag.test(this._customDelimitersToParse);
   }
 
   private _removeSuroundingBrackets() {
-    return this._customDelimitersToParse.slice(this._customDelimitersToParse.indexOf('[')+1, this._customDelimitersToParse.lastIndexOf(']'));
+    const begin = this._customDelimitersToParse.indexOf(this._multiDelimiterFlagLeft)+1;
+    const end = this._customDelimitersToParse.lastIndexOf(this._multiDelimiterFlagRight);
+
+    return this._customDelimitersToParse.slice(begin, end);
   }
 
   private _removeCustomDelimiterFlag() {
