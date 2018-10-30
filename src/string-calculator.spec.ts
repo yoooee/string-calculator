@@ -5,7 +5,8 @@ describe('StringCalculator', () => {
   let stringCalculator: StringCalculator;
   beforeEach(() => {
     stringCalculator = new StringCalculator();
-  })
+  });
+
   describe('add', () => {
     it('returns the total of 33 when supplied with a string of "1,23,4,5"', () => {
       let stringToSplit = '1,23,4,5';
